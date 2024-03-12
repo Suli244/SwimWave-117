@@ -7,4 +7,5 @@ abstract class SwColors {
   static const Color blue1 = Color(0xff14A0FF);
   static Color blue2 = const Color(0xff78C8FF);
   static Color blue3 = const Color(0xff084685);
+   static Color blue007AFF = const Color(0xff007AFF);
 }

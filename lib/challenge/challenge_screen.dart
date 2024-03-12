@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:swim_wave_117/challenge/your_challenge.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
 import 'package:swim_wave_117/settings/settings_screen.dart';
 
-class ChallengeSreen extends StatelessWidget {
+class ChallengeSreen extends StatefulWidget {
   const ChallengeSreen({super.key});
+
+  @override
+  State<ChallengeSreen> createState() => _ChallengeSreenState();
+}
+
+class _ChallengeSreenState extends State<ChallengeSreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +33,7 @@ class ChallengeSreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 24.r),
             child: Column(
               children: [
-                SizedBox(height: 10.h),
+                SizedBox(height: 12.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -53,7 +61,7 @@ class ChallengeSreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 16.h),
+                SizedBox(height: 28.h),
                 Container(
                   padding: EdgeInsets.all(24.r),
                   decoration: BoxDecoration(
@@ -71,14 +79,19 @@ class ChallengeSreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.baseline,
                             textBaseline: TextBaseline.alphabetic,
                             children: [
-                              Text(
-                                '0',
-                                style: TextStyle(
-                                  color: SwColors.whate,
-                                  fontSize: 40.h,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                              FutureBuilder(
+                                  future: getChallengeInt(),
+                                  builder: (context, snapshot) {
+                                    int getChallengeInt = snapshot.data ?? 0;
+                                    return Text(
+                                      '$getChallengeInt',
+                                      style: TextStyle(
+                                        color: SwColors.whate,
+                                        fontSize: 40.h,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    );
+                                  }),
                               SizedBox(width: 4.w),
                               Text(
                                 'exp',
@@ -119,7 +132,16 @@ class ChallengeSreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 SwMotion(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const YourChallengeSreen(),
+                      ),
+                      (protected) => false,
+                    );
+                    setState(() {});
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.symmetric(vertical: 24.r),
@@ -147,4 +169,14 @@ class ChallengeSreen extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<int> getChallengeInt() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getInt('ChallengeInt') ?? 0;
+}
+
+Future<void> setChallengeInt(int challengeInt) async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setInt('ChallengeInt', challengeInt);
 }
