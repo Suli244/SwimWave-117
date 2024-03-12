@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
+import 'package:swim_wave_117/core/sw_motin.dart';
+import 'package:swim_wave_117/settings/settings_screen.dart';
 
 class ChallengeSreen extends StatelessWidget {
   const ChallengeSreen({super.key});
@@ -18,20 +20,41 @@ class ChallengeSreen extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.r),
-          child: Column(
-            children: [
-              SizedBox(height:  10.h),
-              Text(
-                'Challenge',
-                style: TextStyle(
-                  color: SwColors.whate,
-                  fontSize: 20.h,
-                  fontWeight: FontWeight.w500,
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.r),
+            child: Column(
+              children: [
+                SizedBox(height: 10.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(width: 24.w),
+                    Text(
+                      'Challenge',
+                      style: TextStyle(
+                        color: SwColors.whate,
+                        fontSize: 20.h,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SwMotion(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SettingsSreen(),
+                            ));
+                      },
+                      child: Image.asset(
+                        'assets/icons/icon_setting.png',
+                        width: 24.w,
+                      ),
+                    )
+                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

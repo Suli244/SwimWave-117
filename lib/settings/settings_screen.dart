@@ -18,20 +18,33 @@ class SettingsSreen extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.r),
-          child: Column(
-            children: [
-              SizedBox(height: 10.h),
-              Text(
-                'Settings',
-                style: TextStyle(
-                  color: SwColors.whate,
-                  fontSize: 20.h,
-                  fontWeight: FontWeight.w500,
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.r),
+            child: Column(
+              children: [
+                SizedBox(height: 10.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const BackButton(
+                      color: SwColors.whate,
+                    ),
+                    Text(
+                      'Settings',
+                      style: TextStyle(
+                        color: SwColors.whate,
+                        fontSize: 20.h,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 45.w,
+                    )
+                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
