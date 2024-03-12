@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:swim_wave_117/core/con_bar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -48,11 +49,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   firstOpen() async {
     await Future.delayed(const Duration(milliseconds: 1450));
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const OnboardingScreen(),
-    //   ),
-    // );
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SwBottomBar(),
+      ),
+    );
   }
 }
