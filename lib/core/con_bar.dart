@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:swim_wave_117/challenge/challenge_screen.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
+import 'package:swim_wave_117/core/sw_motin.dart';
 import 'package:swim_wave_117/fitness/fitness_screen.dart';
 import 'package:swim_wave_117/safety/safety_screen.dart';
 import 'package:swim_wave_117/stopwatch/stopwatch_screen.dart';
@@ -28,40 +29,40 @@ class SwBottomBarState extends State<SwBottomBar> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            InkWell(
-              onTap: () => setState(() => isActive = 0),
+            SwMotion(
+              onPressed: () => setState(() => isActive = 0),
               child: SvgPicture.asset(
                 'assets/icons/tech.svg',
                 color: isActive == 0 ? null : SwColors.blue2.withOpacity(0.5),
                 width: 28.w,
               ),
             ),
-            InkWell(
-              onTap: () => setState(() => isActive = 1),
+            SwMotion(
+              onPressed: () => setState(() => isActive = 1),
               child: SvgPicture.asset(
                 'assets/icons/safety.svg',
                 color: isActive == 1 ? null : SwColors.blue2.withOpacity(0.5),
                 width: 28.w,
               ),
             ),
-            InkWell(
-              onTap: () => setState(() => isActive = 2),
+            SwMotion(
+              onPressed: () => setState(() => isActive = 2),
               child: SvgPicture.asset(
                 'assets/icons/fitness.svg',
                 color: isActive == 2 ? null : SwColors.blue2.withOpacity(0.5),
                 width: 28.w,
               ),
             ),
-            InkWell(
-              onTap: () => setState(() => isActive = 3),
+            SwMotion(
+              onPressed: () => setState(() => isActive = 3),
               child: SvgPicture.asset(
                 'assets/icons/chalenge.svg',
                 color: isActive == 3 ? null : SwColors.blue2.withOpacity(0.5),
                 width: 28.w,
               ),
             ),
-            InkWell(
-              onTap: () => setState(() => isActive = 4),
+            SwMotion(
+              onPressed: () => setState(() => isActive = 4),
               child: SvgPicture.asset(
                 'assets/icons/stop.svg',
                 color: isActive == 4 ? null : SwColors.blue2.withOpacity(0.5),
