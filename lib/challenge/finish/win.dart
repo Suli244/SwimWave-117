@@ -14,6 +14,7 @@ class Win extends StatefulWidget {
 
 class _WinState extends State<Win> {
   int challengeInt = 0;
+  int challengeWin = 0;
   @override
   void initState() {
     ssaasv();
@@ -22,8 +23,10 @@ class _WinState extends State<Win> {
 
   Future<void> ssaasv() async {
     int challengeIntawait = await getChallengeInt();
+    int challengeWinawait = await getChallengeWin();
     setState(() {
       challengeInt = challengeIntawait;
+      challengeWin = challengeWinawait;
     });
   }
 
@@ -82,7 +85,9 @@ class _WinState extends State<Win> {
                       (route) => false,
                     );
                     challengeInt = challengeInt + 1;
+                    challengeWin = challengeWin + 1;
                     await setChallengeInt(challengeInt);
+                    await setChallengeWin(challengeWin);
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,

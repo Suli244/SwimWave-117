@@ -1,5 +1,6 @@
-
-import 'package:flutter/material.dart';import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:swim_wave_117/challenge/challenge_screen.dart';
 import 'package:swim_wave_117/challenge/content/challenge_content.dart';
 import 'package:swim_wave_117/core/con_bar.dart';
 
@@ -14,6 +15,20 @@ class Fail extends StatefulWidget {
 }
 
 class _FailState extends State<Fail> {
+  int challengeFail = 0;
+  @override
+  void initState() {
+    ssaasv();
+    super.initState();
+  }
+
+  Future<void> ssaasv() async {
+    int challengeFailawait = await getChallengeFail();
+    setState(() {
+      challengeFail = challengeFailawait;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +54,7 @@ class _FailState extends State<Fail> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SwMotion(
-                      onPressed: () {
+                      onPressed: () async {
                         Navigator.pushAndRemoveUntil(
                           context,
                           PageRouteBuilder(
@@ -60,6 +75,8 @@ class _FailState extends State<Fail> {
                           ),
                           (route) => false,
                         );
+                        challengeFail = challengeFail + 1;
+                        await setChallengeFail(challengeFail);
                       },
                       child: Icon(
                         Icons.arrow_back_ios_rounded,

@@ -110,23 +110,33 @@ class _ChallengeSreenState extends State<ChallengeSreen> {
                         ],
                       ),
                       SizedBox(height: 8.h),
-                      Text(
-                        'Challenges completed: 0',
-                        style: TextStyle(
-                          color: SwColors.whate,
-                          fontSize: 16.h,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
+                      FutureBuilder(
+                          future: getChallengeWin(),
+                          builder: (context, snapshot) {
+                            int getChallengeWin = snapshot.data ?? 0;
+                            return Text(
+                              'Challenges completed: $getChallengeWin',
+                              style: TextStyle(
+                                color: SwColors.whate,
+                                fontSize: 16.h,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            );
+                          }),
                       SizedBox(height: 4.h),
-                      Text(
-                        'Failed Challenges: 0',
-                        style: TextStyle(
-                          color: SwColors.whate,
-                          fontSize: 16.h,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
+                      FutureBuilder(
+                          future: getChallengeFail(),
+                          builder: (context, snapshot) {
+                            int getChallengeFail = snapshot.data ?? 0;
+                            return Text(
+                              'Failed Challenges: $getChallengeFail',
+                              style: TextStyle(
+                                color: SwColors.whate,
+                                fontSize: 16.h,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            );
+                          }),
                     ],
                   ),
                 ),
@@ -179,4 +189,24 @@ Future<int> getChallengeInt() async {
 Future<void> setChallengeInt(int challengeInt) async {
   final prefs = await SharedPreferences.getInstance();
   prefs.setInt('ChallengeInt', challengeInt);
+}
+
+Future<int> getChallengeWin() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getInt('ChallengeWin') ?? 0;
+}
+
+Future<void> setChallengeWin(int challengeWin) async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setInt('ChallengeWin', challengeWin);
+}
+
+Future<int> getChallengeFail() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getInt('ChallengeFail') ?? 0;
+}
+
+Future<void> setChallengeFail(int challengeFail) async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setInt('ChallengeFail', challengeFail);
 }
