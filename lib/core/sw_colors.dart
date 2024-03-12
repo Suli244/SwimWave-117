@@ -8,4 +8,5 @@ abstract class SwColors {
   static Color blue2 = const Color(0xff78C8FF);
   static Color blue3 = const Color(0xff47CFFF);
   static Color blue4 = const Color(0xff1885F2);
+  static Color blue5 = const Color(0xff084685);
 }
