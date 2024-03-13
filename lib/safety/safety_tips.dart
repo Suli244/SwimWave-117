@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
 import 'package:swim_wave_117/safety/safety_txt.dart';
@@ -43,7 +44,9 @@ class SafetyTips extends StatelessWidget {
                   SizedBox(
                     width: 45.w,
                     child: SwMotion(
-                        onPressed: () {},
+                        onPressed: () {
+                          Share.share(model.title);
+                        },
                         child: const Icon(
                           Icons.ios_share,
                           color: SwColors.blue1,
