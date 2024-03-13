@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
+import 'package:swim_wave_117/stopwatch/logic/model/timer_hive_model.dart';
 
 class TimerWidget extends StatefulWidget {
   const TimerWidget({
     super.key,
+    required this.model,
   });
+  final TimerHiveModel model;
 
   @override
   State<TimerWidget> createState() => _TimerWidgetState();
@@ -17,9 +20,9 @@ class TimerWidget extends StatefulWidget {
 
 class _TimerWidgetState extends State<TimerWidget> {
   late Timer _timer;
-  int _elapsedSeconds = 0;
+  late int _elapsedSeconds = widget.model.timer;
   bool _isRunning = false;
-  bool _isStopped = false;
+  late bool _isStopped = widget.model.isStopped;
 
   @override
   void dispose() {
@@ -138,7 +141,7 @@ class _TimerWidgetState extends State<TimerWidget> {
             ],
           ),
           Text(
-            'Timer',
+            widget.model.name,
             style: TextStyle(
               color: SwColors.whate,
               fontSize: 16.h,
