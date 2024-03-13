@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:swim_wave_117/challenge/your_challenge.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
@@ -72,43 +73,47 @@ class _ChallengeSreenState extends State<ChallengeSreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.baseline,
-                            textBaseline: TextBaseline.alphabetic,
-                            children: [
-                              FutureBuilder(
-                                  future: getChallengeInt(),
-                                  builder: (context, snapshot) {
-                                    int getChallengeInt = snapshot.data ?? 0;
-                                    return Text(
+                      FutureBuilder(
+                          future: getChallengeInt(),
+                          builder: (context, snapshot) {
+                            int getChallengeInt = snapshot.data ?? 0;
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.baseline,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    Text(
                                       '$getChallengeInt',
                                       style: TextStyle(
                                         color: SwColors.whate,
                                         fontSize: 40.h,
                                         fontWeight: FontWeight.w700,
                                       ),
-                                    );
-                                  }),
-                              SizedBox(width: 4.w),
-                              Text(
-                                'exp',
-                                style: TextStyle(
-                                  color: SwColors.whate,
-                                  fontSize: 16.h,
-                                  fontWeight: FontWeight.w500,
+                                    ),
+                                    SizedBox(width: 4.w),
+                                    Text(
+                                      'exp',
+                                      style: TextStyle(
+                                        color: SwColors.whate,
+                                        fontSize: 16.h,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
-                          ),
-                          SwMotion(
-                              onPressed: () {},
-                              child: Image.asset('assets/images/share.png',
-                                  width: 24.w)),
-                        ],
-                      ),
+                                SwMotion(
+                                    onPressed: () {
+                                      Share.share('$getChallengeInt exp');
+                                    },
+                                    child: Image.asset(
+                                        'assets/images/share.png',
+                                        width: 24.w)),
+                              ],
+                            );
+                          }),
                       SizedBox(height: 8.h),
                       FutureBuilder(
                           future: getChallengeWin(),
