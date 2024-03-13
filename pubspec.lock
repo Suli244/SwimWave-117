@@ -49,32 +49,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-<<<<<<< HEAD
-  cached_network_image:
-    dependency: "direct main"
-    description:
-      name: cached_network_image
-      sha256: "28ea9690a8207179c319965c13cd8df184d5ee721ae2ce60f398ced1219cea1f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.3.1"
-  cached_network_image_platform_interface:
-    dependency: transitive
-    description:
-      name: cached_network_image_platform_interface
-      sha256: "9e90e78ae72caa874a323d78fa6301b3fb8fa7ea76a8f96dc5b5bf79f283bf2f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.0"
-  cached_network_image_web:
-    dependency: transitive
-    description:
-      name: cached_network_image_web
-      sha256: "42a835caa27c220d1294311ac409a43361088625a4f23c820b006dd9bffb3316"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.1"
-=======
   build:
     dependency: transitive
     description:
@@ -139,7 +113,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "8.9.1"
->>>>>>> refs/remotes/origin/main
+  cached_network_image:
+    dependency: "direct main"
+    description:
+      name: cached_network_image
+      sha256: "28ea9690a8207179c319965c13cd8df184d5ee721ae2ce60f398ced1219cea1f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.1"
+  cached_network_image_platform_interface:
+    dependency: transitive
+    description:
+      name: cached_network_image_platform_interface
+      sha256: "9e90e78ae72caa874a323d78fa6301b3fb8fa7ea76a8f96dc5b5bf79f283bf2f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
+  cached_network_image_web:
+    dependency: transitive
+    description:
+      name: cached_network_image_web
+      sha256: "42a835caa27c220d1294311ac409a43361088625a4f23c820b006dd9bffb3316"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   characters:
     dependency: transitive
     description:
@@ -180,8 +177,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.18.0"
-<<<<<<< HEAD
-=======
   convert:
     dependency: transitive
     description:
@@ -198,7 +193,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.3+8"
->>>>>>> refs/remotes/origin/main
   crypto:
     dependency: transitive
     description:
@@ -260,7 +254,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
+  flutter_bloc:
+    dependency: "direct main"
+    description:
+      name: flutter_bloc
+      sha256: "87325da1ac757fcc4813e6b34ed5dd61169973871fdf181d6c2109dd6935ece1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "8.1.4"
   flutter_cache_manager:
     dependency: transitive
     description:
@@ -325,16 +326,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
-=======
-  flutter_bloc:
-    dependency: "direct main"
-    description:
-      name: flutter_bloc
-      sha256: "87325da1ac757fcc4813e6b34ed5dd61169973871fdf181d6c2109dd6935ece1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "8.1.4"
->>>>>>> refs/remotes/origin/main
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -465,19 +456,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.18.1"
-<<<<<<< HEAD
-  js:
-    dependency: transitive
-    description:
-      name: js
-      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.6.7"
-  leak_tracker:
-=======
   io:
->>>>>>> refs/remotes/origin/main
     dependency: transitive
     description:
       name: io
@@ -489,10 +468,10 @@ packages:
     dependency: transitive
     description:
       name: js
-      sha256: c1b2e9b5ea78c45e1a0788d29606ba27dc5f71f019f32ca5140f61ef071838cf
+      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.1"
+    version: "0.6.7"
   json_annotation:
     dependency: transitive
     description:
@@ -540,17 +519,6 @@ packages:
       sha256: a6e590c838b18133bb482a2745ad77c5bb7715fb0451209e1a7567d416678b8e
       url: "https://pub.dev"
     source: hosted
-<<<<<<< HEAD
-    version: "1.11.0"
-  octo_image:
-    dependency: transitive
-    description:
-      name: octo_image
-      sha256: "45b40f99622f11901238e18d48f5f12ea36426d8eced9f4cbf58479c7aa2430d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
-=======
     version: "1.10.0"
   mime:
     dependency: transitive
@@ -568,6 +536,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  octo_image:
+    dependency: transitive
+    description:
+      name: octo_image
+      sha256: "45b40f99622f11901238e18d48f5f12ea36426d8eced9f4cbf58479c7aa2430d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   package_config:
     dependency: transitive
     description:
@@ -576,7 +552,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
->>>>>>> refs/remotes/origin/main
   path:
     dependency: transitive
     description:
@@ -665,16 +640,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
-<<<<<<< HEAD
-  rxdart:
-    dependency: transitive
-    description:
-      name: rxdart
-      sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.27.7"
-=======
   pool:
     dependency: transitive
     description:
@@ -707,6 +672,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.3"
+  rxdart:
+    dependency: transitive
+    description:
+      name: rxdart
+      sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.27.7"
   share_plus:
     dependency: "direct main"
     description:
@@ -723,7 +696,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.1"
->>>>>>> refs/remotes/origin/main
   shared_preferences:
     dependency: "direct main"
     description:
@@ -841,7 +813,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.0"
-<<<<<<< HEAD
   sqflite:
     dependency: transitive
     description:
@@ -858,8 +829,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.5.3"
-=======
->>>>>>> refs/remotes/origin/main
   stack_trace:
     dependency: transitive
     description:
@@ -940,8 +909,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
-<<<<<<< HEAD
-=======
   url_launcher_linux:
     dependency: transitive
     description:
@@ -974,7 +941,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
->>>>>>> refs/remotes/origin/main
   uuid:
     dependency: transitive
     description:
@@ -1095,16 +1061,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.5.0"
-<<<<<<< HEAD
-  youtube_player_flutter:
-    dependency: "direct main"
-    description:
-      name: youtube_player_flutter
-      sha256: "6de924ac24d7d9d0723fc47d2bbc71d656f089aba9b7f26d4e6855b5ea3bf3fe"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.0.0"
-=======
   yaml:
     dependency: transitive
     description:
@@ -1113,7 +1069,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
->>>>>>> refs/remotes/origin/main
+  youtube_player_flutter:
+    dependency: "direct main"
+    description:
+      name: youtube_player_flutter
+      sha256: "6de924ac24d7d9d0723fc47d2bbc71d656f089aba9b7f26d4e6855b5ea3bf3fe"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.0.0"
 sdks:
   dart: ">=3.2.6 <4.0.0"
   flutter: ">=3.16.6"
