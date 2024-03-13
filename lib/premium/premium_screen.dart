@@ -54,7 +54,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
             children: [
               PremiItem(
                 imag: 'assets/images/premium.png',
-                tit: invjsdvsdvddd ? 'Loading...' : 'PREMIUM ACCESS',
+                tit: 'PREMIUM ACCESS',
                 onPressed: () async {
                   setState(() => invjsdvsdvddd = true);
                   await swimwavePurchase();
@@ -85,7 +85,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
                       (protected) => false,
                     );
                   }
-                },
+                }, prem: invjsdvsdvddd,
               ),
               SizedBox(height: 12.h),
               RestoreButtons(

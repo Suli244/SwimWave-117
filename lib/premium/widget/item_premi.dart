@@ -11,12 +11,13 @@ class PremiItem extends StatelessWidget {
     required this.tit,
     this.onPressed,
     this.onPresseD,
+    required this.prem,
   });
   final String imag;
   final String tit;
   final Function()? onPressed;
   final Function()? onPresseD;
-
+  final bool prem;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -92,7 +93,7 @@ class PremiItem extends StatelessWidget {
                 SizedBox(height: 35.h),
                 BtnModWidget(
                   onPressed: onPressed,
-                  text: 'BUY PREMIUM FOR \$0,99',
+                  text: prem == true ? 'Loading...' : 'BUY PREMIUM FOR \$0,99',
                 ),
               ],
             ),

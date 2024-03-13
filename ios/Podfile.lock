@@ -1,4 +1,8 @@
 PODS:
+  - Adapty (2.9.6)
+  - adapty_flutter (2.9.3):
+    - Adapty (= 2.9.6)
+    - Flutter
   - Flutter (1.0.0)
   - flutter_inappwebview_ios (0.0.1):
     - Flutter
@@ -23,6 +27,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - adapty_flutter (from `.symlinks/plugins/adapty_flutter/ios`)
   - Flutter (from `Flutter`)
   - flutter_inappwebview_ios (from `.symlinks/plugins/flutter_inappwebview_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
@@ -33,9 +38,12 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Adapty
     - OrderedSet
 
 EXTERNAL SOURCES:
+  adapty_flutter:
+    :path: ".symlinks/plugins/adapty_flutter/ios"
   Flutter:
     :path: Flutter
   flutter_inappwebview_ios:
@@ -52,6 +60,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
+  Adapty: 18325c1f4d69ead08042e1c03218d2cc3f9b9693
+  adapty_flutter: 2499028dcada42dcf8849341ca6fd4cc697d6d24
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_inappwebview_ios: 97215cf7d4677db55df76782dbd2930c5e1c1ea0
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
@@ -63,4 +73,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.12.1
