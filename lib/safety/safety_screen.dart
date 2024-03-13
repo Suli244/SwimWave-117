@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
+import 'package:swim_wave_117/fitness/detail_description/detail_description.dart';
 import 'package:swim_wave_117/safety/safety_tips.dart';
 import 'package:swim_wave_117/safety/safety_txt.dart';
 import 'package:swim_wave_117/safety/widgets/safety_widget.dart';
@@ -75,7 +76,30 @@ class SafetySreen extends StatelessWidget {
                           color: SwColors.blue2.withOpacity(0.5),
                         ),
                         SafetyWidget(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const DetailDescription(
+                                  titleApDetail: 'Learning to swim',
+                                  title: 'Overcome Fear',
+                                  url:
+                                      'https://youtu.be/lUEM1ZxtuGc?si=Y44FLjLBmsOmalpz',
+                                  des:
+                                      '''Overcoming the fear of swimming is a common challenge, but with patience, gradual exposure, and positive reinforcement, many people can conquer this fear and enjoy the benefits of swimming. Here's a detailed guide on overcoming the fear of swimming:
+
+1. Understand the Fear:
+Identify the specific aspects of swimming that trigger fear. It could be fear of water, fear of drowning, or fear of not being able to breathe.
+
+2. Take Small Steps:
+Start by getting comfortable in the water without the pressure of swimming. Stand in shallow water, allowing yourself to feel the water on your skin and gradually acclimating to the sensations.
+
+**3. Breath Control Practice:
+Practice breathing exercises outside of the water to build confidence in controlling your breath. Slow, deep breaths can help calm anxiety.''',
+                                ),
+                              ),
+                            );
+                          },
                           title: 'Overcome Fear',
                           subTitle:
                               'Acknowledge any fears you may have about the water. Start by getting comfortable in shallow water and gradually progressing to deeper areas.',
