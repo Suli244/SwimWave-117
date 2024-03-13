@@ -1,6 +1,12 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swim_wave_117/core/con_bar.dart';
+import 'package:swim_wave_117/core/swimwave_apsaksas.dart';
+import 'package:swim_wave_117/core/swimwave_psascovas.dart';
+import 'package:swim_wave_117/core/urls.dart';
 import 'package:swim_wave_117/premium/widget/item_premi.dart';
 import 'package:swim_wave_117/premium/widget/restore_widgets.dart';
 
@@ -15,6 +21,20 @@ class PremiumScreen extends StatefulWidget {
 }
 
 class _PremiumScreenState extends State<PremiumScreen> {
+  Future<void> swimwavePurchase() async {
+    final swimwavePaywall =
+        await SwimwaveAdapty().swimwaveGetPaywall(DocFF.slkdnvsdvsdv);
+    if (swimwavePaywall == null) return;
+    final swimwaveProducts =
+        await SwimwaveAdapty().swimwaveGetPaywallProducts(swimwavePaywall);
+    if (swimwaveProducts == null) return;
+    if (kDebugMode) log('Swimwave');
+
+    await SwimwaveAdapty().swimwaveMakePurchase(swimwaveProducts.first);
+  }
+
+  bool invjsdvsdvddd = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,16 +54,24 @@ class _PremiumScreenState extends State<PremiumScreen> {
             children: [
               PremiItem(
                 imag: 'assets/images/premium.png',
-                tit: 'PREMIUM ACCESS',
-                onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SwBottomBar(),
-                    ),
-                    (protected) => false,
-                  );
-                  print('Premium');
+                tit: invjsdvsdvddd ? 'Loading...' : 'PREMIUM ACCESS',
+                onPressed: () async {
+                  setState(() => invjsdvsdvddd = true);
+                  await swimwavePurchase();
+                  final hasPremiumStatusSmartTrader =
+                      await SwimwaveAdapty().swimwaveHasPremiumStatus();
+                  if (hasPremiumStatusSmartTrader) {
+                    await setSwimwavePichajs();
+                    // ignore: use_build_context_synchronously
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const SwBottomBar(),
+                      ),
+                      (route) => false,
+                    );
+                  }
+                  setState(() => invjsdvsdvddd = false);
                 },
                 onPresseD: () {
                   if (widget.isClose) {
@@ -57,20 +85,15 @@ class _PremiumScreenState extends State<PremiumScreen> {
                       (protected) => false,
                     );
                   }
-                  print('X');
                 },
               ),
               SizedBox(height: 12.h),
               RestoreButtons(
-                onPressTermOfService: () {
-                  print('Term Of Service');
-                },
+                onPressTermOfService: () {},
                 onPressRestorePurchase: () {
-                  print('Restore Purchase');
+                  restoreSwimwavePichajs(context);
                 },
-                onPressPrivacyPolicy: () {
-                  print('Privacy Policy');
-                },
+                onPressPrivacyPolicy: () {},
               ),
             ],
           ),

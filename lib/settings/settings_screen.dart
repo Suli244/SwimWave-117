@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
+import 'package:swim_wave_117/core/swimwave_psascovas.dart';
 import 'package:swim_wave_117/onboarding/btn_mod_wid.dart';
 import 'package:swim_wave_117/premium/premium_screen.dart';
 
@@ -68,7 +69,11 @@ class SettingsSreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 12.h),
-                const BtnModWidget(text: 'Restore purchase'),
+                BtnModWidget(
+                    onPressed: () {
+                      restoreSwimwavePichajs(context);
+                    },
+                    text: 'Restore purchase'),
                 SizedBox(height: 12.h),
                 const BtnModWidget(text: 'Privacy policy'),
                 SizedBox(height: 12.h),
