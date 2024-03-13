@@ -2,31 +2,52 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
+import 'package:swim_wave_117/stopwatch/logic/cubit/delete_timer/delete_timer_cubit.dart';
+import 'package:swim_wave_117/stopwatch/logic/cubit/get_timer/get_timer_cubit.dart';
+import 'package:swim_wave_117/stopwatch/logic/cubit/update_timer/update_timer_cubit.dart';
 import 'package:swim_wave_117/stopwatch/logic/model/timer_hive_model.dart';
+import 'package:swim_wave_117/stopwatch/logic/repo/timer_repo.dart';
 
 class TimerWidget extends StatefulWidget {
   const TimerWidget({
     super.key,
     required this.model,
+    required this.onsss,
   });
   final TimerHiveModel model;
-
+  final ValueChanged onsss;
   @override
   State<TimerWidget> createState() => _TimerWidgetState();
 }
 
 class _TimerWidgetState extends State<TimerWidget> {
   late Timer _timer;
-  late int _elapsedSeconds = widget.model.timer;
+  late int _elapsedSeconds;
   bool _isRunning = false;
-  late bool _isStopped = widget.model.isStopped;
+  late bool _isStopped;
+
+  @override
+  void initState() {
+    super.initState();
+    fff();
+    context.read<GetTimerCubit>().getAddTimer();
+    _timer = Timer(Duration.zero, () {});
+  }
+
+  void fff() {
+    setState(() {
+      _elapsedSeconds = widget.model.timer;
+      _isStopped = widget.model.isStopped;
+    });
+  }
 
   @override
   void dispose() {
-    _timer.cancel(); // Cancel any running timer when the widget is disposed
+    _timer.cancel();
     super.dispose();
   }
 
@@ -49,16 +70,6 @@ class _TimerWidgetState extends State<TimerWidget> {
         });
         _isRunning = true;
       }
-    });
-  }
-
-  void _stopTimer() {
-    setState(() {
-      _timer.cancel();
-      _isRunning = false;
-      _isStopped = true;
-      
-      // _elapsedSeconds = 0;
     });
   }
 
@@ -87,9 +98,9 @@ class _TimerWidgetState extends State<TimerWidget> {
               const Spacer(),
               _isStopped
                   ? SwMotion(
-                      // Show delete button if timer is stopped
-                      onPressed: () {
-                        _showDeleteDialog(context);
+                      onPressed: () async {
+                        await _showDeleteDialog(context);
+                        widget.onsss('');
                       },
                       child: Container(
                         width: 40.w,
@@ -122,19 +133,50 @@ class _TimerWidgetState extends State<TimerWidget> {
                           ),
                         ),
                         SizedBox(width: 8.w),
-                        SwMotion(
-                          onPressed: _elapsedSeconds == 0 ? () {} : _stopTimer,
-                          child: Container(
-                            width: 40.w,
-                            height: 40.h,
-                            decoration: BoxDecoration(
-                              color: SwColors.blue1,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: const Icon(
-                              Icons.stop,
-                              color: SwColors.whate,
-                            ),
+                        BlocProvider(
+                          create: (context) =>
+                              UpdateTimerCubit(TimerRepoImpl()),
+                          child:
+                              BlocConsumer<UpdateTimerCubit, UpdateTimerState>(
+                            listener: (context, state) {
+                              state.whenOrNull(
+                                success: () {
+                                  _timer.cancel();
+                                  _isRunning = false;
+                                  _isStopped = true;
+                                },
+                              );
+                            },
+                            builder: (context, state) {
+                              return SwMotion(
+                                onPressed: _elapsedSeconds == 0
+                                    ? () {}
+                                    : () {
+                                        setState(() {
+                                          _timer.cancel();
+                                          _isRunning = false;
+                                          _isStopped = true;
+                                        });
+                                        context
+                                            .read<UpdateTimerCubit>()
+                                            .updateTimerAll(widget.model.id,
+                                                _elapsedSeconds);
+                                        // widget.onsss('');
+                                      },
+                                child: Container(
+                                  width: 40.w,
+                                  height: 40.h,
+                                  decoration: BoxDecoration(
+                                    color: SwColors.blue1,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const Icon(
+                                    Icons.stop,
+                                    color: SwColors.whate,
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ],
@@ -154,8 +196,8 @@ class _TimerWidgetState extends State<TimerWidget> {
     );
   }
 
-  void _showDeleteDialog(BuildContext context) {
-    showDialog(
+  Future<void> _showDeleteDialog(BuildContext context) async {
+    await showDialog(
       context: context,
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
@@ -180,11 +222,25 @@ class _TimerWidgetState extends State<TimerWidget> {
               },
               child: const Text('No'),
             ),
-            CupertinoButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Yes'),
+            BlocProvider(
+              create: (context) => DeleteTimerCubit(TimerRepoImpl()),
+              child: BlocConsumer<DeleteTimerCubit, DeleteTimerState>(
+                listener: (context, state) {
+                  state.whenOrNull(
+                    success: () {
+                      Navigator.pop(context);
+                    },
+                  );
+                },
+                builder: (context, state) {
+                  return CupertinoButton(
+                    onPressed: () {
+                      context.read<DeleteTimerCubit>().delete(widget.model.id);
+                    },
+                    child: const Text('Yes'),
+                  );
+                },
+              ),
             ),
           ],
         );

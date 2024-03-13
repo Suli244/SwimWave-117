@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:swim_wave_117/core/con_bar.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
 import 'package:swim_wave_117/settings/settings_screen.dart';
@@ -20,6 +19,12 @@ class StopwatchSreen extends StatefulWidget {
 }
 
 class _StopwatchSreenState extends State<StopwatchSreen> {
+  @override
+  void initState() {
+    context.read<GetTimerCubit>().getAddTimer();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,68 +73,67 @@ class _StopwatchSreenState extends State<StopwatchSreen> {
                   ],
                 ),
                 SizedBox(height: 10.h),
-                BlocProvider(
-                  create: (context) =>
-                      GetTimerCubit(TimerRepoImpl())..getAddTimer(),
-                  child: BlocBuilder<GetTimerCubit, GetTimerState>(
-                    builder: (context, state) {
-                      return state.maybeWhen(
-                        orElse: () => const Center(
-                          child: SizedBox.square(
-                            dimension: 24,
-                            child: CircularProgressIndicator(
-                              color: SwColors.blue1,
-                              strokeWidth: 2.5,
-                            ),
+                BlocBuilder<GetTimerCubit, GetTimerState>(
+                  builder: (context, state) {
+                    return state.maybeWhen(
+                      orElse: () => const Center(
+                        child: SizedBox.square(
+                          dimension: 24,
+                          child: CircularProgressIndicator(
+                            color: SwColors.blue1,
+                            strokeWidth: 2.5,
                           ),
                         ),
-                        loading: () => const Center(
-                          child: SizedBox.square(
-                            dimension: 24,
-                            child: CircularProgressIndicator(
-                              color: SwColors.blue1,
-                              strokeWidth: 2.5,
-                            ),
+                      ),
+                      loading: () => const Center(
+                        child: SizedBox.square(
+                          dimension: 24,
+                          child: CircularProgressIndicator(
+                            color: SwColors.blue1,
+                            strokeWidth: 2.5,
                           ),
                         ),
-                        error: (error) => Center(
-                          child: Text(
-                            error,
-                            style: const TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w400),
-                            textAlign: TextAlign.center,
-                          ),
+                      ),
+                      error: (error) => Center(
+                        child: Text(
+                          error,
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w400),
+                          textAlign: TextAlign.center,
                         ),
-                        success: (model) {
-                          return model.isNotEmpty
-                              ? Expanded(
-                                  child: ListView.separated(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 10.h),
-                                    shrinkWrap: true,
-                                    itemCount: model.length,
-                                    separatorBuilder: (context, index) =>
-                                        const SizedBox(height: 12),
-                                    itemBuilder: (context, index) =>
-                                        TimerWidget(
-                                      model: model[index],
-                                    ),
+                      ),
+                      success: (model) {
+                        return model.isNotEmpty
+                            ? Expanded(
+                                child: ListView.separated(
+                                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                                  shrinkWrap: true,
+                                  itemCount: model.length,
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(height: 12),
+                                  itemBuilder: (context, index) => TimerWidget(
+                                    model: model[index],
+                                    onsss: (_) {
+                                      context
+                                          .read<GetTimerCubit>()
+                                          .getAddTimer();
+                                    },
                                   ),
-                                )
-                              : Center(
-                                  child: Text(
-                                    'You have no Timer',
-                                    style: TextStyle(
-                                      fontSize: 16.h,
-                                      fontWeight: FontWeight.w500,
-                                      color: SwColors.blue1,
-                                    ),
+                                ),
+                              )
+                            : Center(
+                                child: Text(
+                                  'You have no Timer',
+                                  style: TextStyle(
+                                    fontSize: 16.h,
+                                    fontWeight: FontWeight.w500,
+                                    color: SwColors.blue1,
                                   ),
-                                );
-                        },
-                      );
-                    },
-                  ),
+                                ),
+                              );
+                      },
+                    );
+                  },
                 ),
               ],
             ),
@@ -210,14 +214,7 @@ class _StopwatchSreenState extends State<StopwatchSreen> {
                   listener: (context, state) {
                 state.whenOrNull(
                   success: () {
-                    // Navigator.pop(context);
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SwBottomBar(indexScr: 4),
-                      ),
-                    );
+                    Navigator.pop(context);
                   },
                 );
               }, builder: (context, state) {
