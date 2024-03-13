@@ -57,6 +57,7 @@ class _TimerWidgetState extends State<TimerWidget> {
       _timer.cancel();
       _isRunning = false;
       _isStopped = true;
+      
       // _elapsedSeconds = 0;
     });
   }

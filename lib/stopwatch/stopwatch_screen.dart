@@ -138,8 +138,9 @@ class _StopwatchSreenState extends State<StopwatchSreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: SwMotion(
-        onPressed: () {
-          _showAddStopwatchDialog(context);
+        onPressed: () async {
+          await _showAddStopwatchDialog(context);
+          context.read<GetTimerCubit>().getAddTimer();
         },
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 24.r),
@@ -164,10 +165,10 @@ class _StopwatchSreenState extends State<StopwatchSreen> {
     );
   }
 
-  void _showAddStopwatchDialog(BuildContext context) {
+  Future<void> _showAddStopwatchDialog(BuildContext context) async {
     String stopwatchName = '';
 
-    showDialog(
+    await showDialog(
       context: context,
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
@@ -209,6 +210,8 @@ class _StopwatchSreenState extends State<StopwatchSreen> {
                   listener: (context, state) {
                 state.whenOrNull(
                   success: () {
+                    // Navigator.pop(context);
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -227,7 +230,6 @@ class _StopwatchSreenState extends State<StopwatchSreen> {
                           name: stopwatchName,
                           isStopped: false);
                       context.read<SetTimerCubit>().setAddTimer(model);
-                      Navigator.pop(context);
                     }
 
                     // _startStopwatch(stopwatchName, context);
