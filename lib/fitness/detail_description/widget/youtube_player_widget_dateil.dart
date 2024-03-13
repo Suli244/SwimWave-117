@@ -23,7 +23,7 @@ class _YoutubePlayeRState extends State<YoutubePlayeR> {
     controller = YoutubePlayerController(
       initialVideoId: videoId!,
       flags: const YoutubePlayerFlags(
-        autoPlay: false,
+        autoPlay: true,
         showLiveFullscreenButton: false,
       ),
     );

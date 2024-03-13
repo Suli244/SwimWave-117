@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
-import 'package:swim_wave_117/settings/settings_screen.dart';
+import 'package:swim_wave_117/fitness/detail_description/widget/youtube_player_widget_dateil.dart';
+import 'package:swim_wave_117/techniques/content/techniques_content.dart';
 
 class DetailTechniquesSreen extends StatefulWidget {
-  const DetailTechniquesSreen({super.key});
-
+  const DetailTechniquesSreen({super.key, required this.model});
+  final TechCon model;
   @override
   State<DetailTechniquesSreen> createState() => _DetailTechniquesSreenState();
 }
 
 class _DetailTechniquesSreenState extends State<DetailTechniquesSreen> {
-  String text = 'Techniques';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,137 +31,72 @@ class _DetailTechniquesSreenState extends State<DetailTechniquesSreen> {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.r),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 10.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(width: 24.w),
+                    SwMotion(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios_rounded,
+                        size: 24.w,
+                        color: SwColors.blue1,
+                      ),
+                    ),
                     Text(
-                      'Study',
+                      'Techniques',
                       style: TextStyle(
                         color: SwColors.whate,
                         fontSize: 20.h,
                         fontWeight: FontWeight.w500,
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                    SwMotion(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SettingsSreen(),
-                            ));
-                      },
-                      child: Image.asset(
-                        'assets/icons/icon_setting.png',
-                        width: 24.w,
-                      ),
-                    )
+                    SizedBox(width: 24.w),
                   ],
                 ),
-                SizedBox(height: 20.h),
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(11.r),
-                      border:
-                          Border.all(color: SwColors.blue2.withOpacity(0.5))),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: SwMotion(
-                          onPressed: () {
-                            setState(() {
-                              text = 'Techniques';
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 8.r),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(11.r),
-                              color: text == 'Techniques'
-                                  ? SwColors.blue1
-                                  : Colors.transparent,
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Techniques',
-                                style: TextStyle(
-                                  color: text == 'Techniques'
-                                      ? SwColors.whate
-                                      : SwColors.blue2.withOpacity(0.5),
-                                  fontSize: 16.h,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                SizedBox(height: 12.h),
+                Expanded(
+                    child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 12.h),
+                    Text(
+                      'FREE',
+                      style: TextStyle(
+                        color: SwColors.blue1,
+                        fontSize: 16.h,
+                        fontWeight: FontWeight.w400,
                       ),
-                      Expanded(
-                        child: SwMotion(
-                          onPressed: () {
-                            setState(() {
-                              text = 'Tips';
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 8.r),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(11.r),
-                              color: text == 'Tips'
-                                  ? SwColors.blue1
-                                  : Colors.transparent,
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Tips',
-                                style: TextStyle(
-                                  color: text == 'Tips'
-                                      ? SwColors.whate
-                                      : SwColors.blue2.withOpacity(0.5),
-                                  fontSize: 16.h,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                    ),
+                    SizedBox(height: 12.h),
+                    Text(
+                      widget.model.title,
+                      style: TextStyle(
+                        color: SwColors.whate,
+                        fontSize: 24.h,
+                        fontWeight: FontWeight.w700,
                       ),
-                    ],
-                  ),
-                ),
-                SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      text == 'Techniques'
-                          ? ListView.separated(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) {
-                                return Stack(
-                                  children: [
-                                    Container(),
-                                  ],
-                                );
-                              },
-                              separatorBuilder: (_, i) =>
-                                  SizedBox(height: 12.h),
-                              itemCount: 10,
-                            )
-                          : ListView.separated(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) {
-                                return Container();
-                              },
-                              separatorBuilder: (_, i) =>
-                                  SizedBox(height: 12.h),
-                              itemCount: 10,
-                            )
-                    ],
-                  ),
-                )
+                    ),
+                    SizedBox(height: 12.h),
+                    YoutubePlayeR(url: widget.model.video),
+                    SizedBox(height: 12.h),
+                    Text(
+                      widget.model.discr,
+                      style: TextStyle(
+                        color: SwColors.whate,
+                        fontSize: 16.h,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                  ],
+                ))),
               ],
             ),
           ),
@@ -170,4 +105,3 @@ class _DetailTechniquesSreenState extends State<DetailTechniquesSreen> {
     );
   }
 }
-

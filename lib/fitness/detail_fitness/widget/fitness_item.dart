@@ -72,7 +72,7 @@ class DetailFitnessItem extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 12.h,
                           fontWeight: FontWeight.w600,
-                          color: SwColors.blue3,
+                          color: SwColors.blue1,
                         ),
                       ),
                       SizedBox(width: 5.w),

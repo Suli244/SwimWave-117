@@ -36,14 +36,15 @@ class _DetailTipsSreenState extends State<DetailTipsSreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SwMotion(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios_rounded,
-                          size: 24.w,
-                          color: SwColors.blue1,
-                        )),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios_rounded,
+                        size: 24.w,
+                        color: SwColors.blue1,
+                      ),
+                    ),
                     Text(
                       'Tips',
                       style: TextStyle(
@@ -89,7 +90,7 @@ class _DetailTipsSreenState extends State<DetailTipsSreen> {
                     Image.asset(
                       widget.model.image,
                       height: 200.h,
-                      width:MediaQuery.of(context).size.width, 
+                      width: MediaQuery.of(context).size.width,
                       fit: BoxFit.fill,
                     ),
                     SizedBox(height: 12.h),

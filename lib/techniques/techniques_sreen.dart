@@ -7,6 +7,7 @@ import 'package:swim_wave_117/core/sw_motin.dart';
 import 'package:swim_wave_117/settings/settings_screen.dart';
 import 'package:swim_wave_117/techniques/content/techniques_content.dart';
 import 'package:swim_wave_117/techniques/content/tips_content.dart';
+import 'package:swim_wave_117/techniques/detail_techniques_sreen.dart';
 import 'package:swim_wave_117/techniques/detail_tips_sreen.dart';
 
 class TechniquesSreen extends StatefulWidget {
@@ -147,7 +148,17 @@ class _TechniquesSreenState extends State<TechniquesSreen> {
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) {
                                   return SwMotion(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              DetailTechniquesSreen(
+                                            model: listTechCon[index],
+                                          ),
+                                        ),
+                                      );
+                                    },
                                     child: Container(
                                       width: MediaQuery.of(context).size.width,
                                       height: 168.h,
