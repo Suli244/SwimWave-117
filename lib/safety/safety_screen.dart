@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
+import 'package:swim_wave_117/safety/safety_tips.dart';
+import 'package:swim_wave_117/safety/safety_txt.dart';
+import 'package:swim_wave_117/safety/widgets/safety_widget.dart';
 import 'package:swim_wave_117/settings/settings_screen.dart';
 
 class SafetySreen extends StatelessWidget {
@@ -50,8 +53,225 @@ class SafetySreen extends StatelessWidget {
                         'assets/icons/icon_setting.png',
                         width: 24.w,
                       ),
-                    )
+                    ),
                   ],
+                ),
+                SizedBox(height: 10.h),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 16.h),
+                        Text(
+                          'Learning to swim',
+                          style: TextStyle(
+                            color: SwColors.whate,
+                            fontSize: 12.h,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Divider(
+                          color: SwColors.blue2.withOpacity(0.5),
+                        ),
+                        SafetyWidget(
+                          onTap: () {},
+                          title: 'Overcome Fear',
+                          subTitle:
+                              'Acknowledge any fears you may have about the water. Start by getting comfortable in shallow water and gradually progressing to deeper areas.',
+                        ),
+                        SizedBox(height: 12.h),
+                        SafetyWidget(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SafetyTips(
+                                  model: listSafety[0],
+                                ),
+                              ),
+                            );
+                          },
+                          title: 'Get the Right Gear',
+                          subTitle:
+                              'Invest in comfortable swimwear and goggles. Goggles will help you keep your eyes open underwater and protect them from chlorine or saltwater.',
+                        ),
+                        SizedBox(height: 16.h),
+                        Text(
+                          'Safety tips',
+                          style: TextStyle(
+                            color: SwColors.whate,
+                            fontSize: 12.h,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Divider(
+                          color: SwColors.blue2.withOpacity(0.5),
+                        ),
+                        SafetyWidget(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SafetyTips(
+                                  model: listSafety[1],
+                                ),
+                              ),
+                            );
+                          },
+                          title: 'Use Life Jackets',
+                          subTitle:
+                              'Inexperienced swimmers, children, and individuals who are not confident in their swimming abilities should wear U.S. Coast Guard-approved life jackets.',
+                        ),
+                        SizedBox(height: 12.h),
+                        SafetyWidget(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SafetyTips(
+                                  model: listSafety[2],
+                                ),
+                              ),
+                            );
+                          },
+                          title: 'Buddy System',
+                          subTitle:
+                              'Always swim with a buddy, especially in open water. Keep an eye out for each other and be prepared to assist if needed.',
+                        ),
+                        SizedBox(height: 16.h),
+                        Text(
+                          'Instructions on what to do in case of emergency',
+                          style: TextStyle(
+                            color: SwColors.whate,
+                            fontSize: 12.h,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Divider(
+                          color: SwColors.blue2.withOpacity(0.5),
+                        ),
+                        SafetyWidget(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SafetyTips(
+                                  model: listSafety[3],
+                                ),
+                              ),
+                            );
+                          },
+                          title: 'Assess the Situation',
+                          subTitle:
+                              'Quickly evaluate the situation to determine the type of emergency and the level of danger.',
+                        ),
+                        SizedBox(height: 12.h),
+                        SafetyWidget(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SafetyTips(
+                                  model: listSafety[4],
+                                ),
+                              ),
+                            );
+                          },
+                          title: 'Call for Help',
+                          subTitle:
+                              'Dial the emergency services number in your country (e.g., 911 in the United States, 999 in the United Kingdom, 112 in many European countries). Provide essential information such as your location, the nature of the emergency, and any details about injuries or hazards.',
+                        ),
+                        SizedBox(height: 16.h),
+                        Text(
+                          'FAQ',
+                          style: TextStyle(
+                            color: SwColors.whate,
+                            fontSize: 12.h,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Divider(
+                          color: SwColors.blue2.withOpacity(0.5),
+                        ),
+                        SafetyWidget(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SafetyTips(
+                                  model: listSafety[5],
+                                ),
+                              ),
+                            );
+                          },
+                          title: 'Can I swim after eating?',
+                          subTitle:
+                              'Its generally safe to swim after a light meal, but wait at least 30 minutes to avoid discomfort. Heavy meals may cause cramping.',
+                        ),
+                        SizedBox(height: 12.h),
+                        SafetyWidget(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SafetyTips(
+                                  model: listSafety[6],
+                                ),
+                              ),
+                            );
+                          },
+                          title: 'How do I overcome fear of water or swimming?',
+                          subTitle:
+                              'ake lessons from a patient instructor. Start in shallow water and progress gradually.',
+                        ),
+                        SizedBox(height: 16.h),
+                        Text(
+                          'Radiation & sun protection',
+                          style: TextStyle(
+                            color: SwColors.whate,
+                            fontSize: 12.h,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Divider(
+                          color: SwColors.blue2.withOpacity(0.5),
+                        ),
+                        SafetyWidget(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SafetyTips(
+                                  model: listSafety[7],
+                                ),
+                              ),
+                            );
+                          },
+                          title: 'Understanding UV Radiation',
+                          subTitle:
+                              'The sun emits different types of radiation, with UV radiation being a significant concern. UV radiation is categorized into UVA, UVB, and UVC. UVA and UVB can penetrate the',
+                        ),
+                        SizedBox(height: 12.h),
+                        SafetyWidget(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SafetyTips(
+                                  model: listSafety[8],
+                                ),
+                              ),
+                            );
+                          },
+                          title: 'Sunscreen Usage',
+                          subTitle:
+                              'Use a broad-spectrum sunscreen that protects against both UVA and UVB rays. Apply sunscreen with a Sun Protection Factor (SPF) of at least 30',
+                        ),
+                        SizedBox(height: 16.h),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),

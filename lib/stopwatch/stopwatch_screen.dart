@@ -1,11 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:swim_wave_117/core/con_bar.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
 import 'package:swim_wave_117/settings/settings_screen.dart';
+import 'package:swim_wave_117/stopwatch/logic/cubit/get_timer/get_timer_cubit.dart';
+import 'package:swim_wave_117/stopwatch/logic/cubit/set_timer/set_timer_cubit.dart';
+import 'package:swim_wave_117/stopwatch/logic/model/timer_hive_model.dart';
+import 'package:swim_wave_117/stopwatch/logic/repo/timer_repo.dart';
+import 'package:swim_wave_117/stopwatch/widgets/timer_widget.dart';
 
-class StopwatchSreen extends StatelessWidget {
+class StopwatchSreen extends StatefulWidget {
   const StopwatchSreen({super.key});
+
+  @override
+  State<StopwatchSreen> createState() => _StopwatchSreenState();
+}
+
+class _StopwatchSreenState extends State<StopwatchSreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,11 +67,178 @@ class StopwatchSreen extends StatelessWidget {
                     )
                   ],
                 ),
+                SizedBox(height: 10.h),
+                BlocProvider(
+                  create: (context) =>
+                      GetTimerCubit(TimerRepoImpl())..getAddTimer(),
+                  child: BlocBuilder<GetTimerCubit, GetTimerState>(
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                        orElse: () => const Center(
+                          child: SizedBox.square(
+                            dimension: 24,
+                            child: CircularProgressIndicator(
+                              color: SwColors.blue1,
+                              strokeWidth: 2.5,
+                            ),
+                          ),
+                        ),
+                        loading: () => const Center(
+                          child: SizedBox.square(
+                            dimension: 24,
+                            child: CircularProgressIndicator(
+                              color: SwColors.blue1,
+                              strokeWidth: 2.5,
+                            ),
+                          ),
+                        ),
+                        error: (error) => Center(
+                          child: Text(
+                            error,
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w400),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        success: (model) {
+                          return model.isNotEmpty
+                              ? Expanded(
+                                  child: ListView.separated(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 10.h),
+                                    shrinkWrap: true,
+                                    itemCount: model.length,
+                                    separatorBuilder: (context, index) =>
+                                        const SizedBox(height: 12),
+                                    itemBuilder: (context, index) =>
+                                        TimerWidget(
+                                      model: model[index],
+                                    ),
+                                  ),
+                                )
+                              : Center(
+                                  child: Text(
+                                    'You have no Timer',
+                                    style: TextStyle(
+                                      fontSize: 16.h,
+                                      fontWeight: FontWeight.w500,
+                                      color: SwColors.blue1,
+                                    ),
+                                  ),
+                                );
+                        },
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SwMotion(
+        onPressed: () {
+          _showAddStopwatchDialog(context);
+        },
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 24.r),
+          width: MediaQuery.of(context).size.width,
+          height: 68.h,
+          decoration: BoxDecoration(
+            color: SwColors.blue1,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Center(
+            child: Text(
+              'Add stopwatch ',
+              style: TextStyle(
+                color: SwColors.whate,
+                fontSize: 16.h,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showAddStopwatchDialog(BuildContext context) {
+    String stopwatchName = '';
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text(
+            'Starting the timer',
+            style: TextStyle(
+              fontSize: 17.h,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          content: Column(
+            children: [
+              Text(
+                'Write a name for the timer',
+                style: TextStyle(
+                  fontSize: 12.h,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              SizedBox(height: 16.h),
+              CupertinoTextField(
+                onChanged: (value) {
+                  stopwatchName = value;
+                },
+                placeholder: 'Timer name',
+              ),
+            ],
+          ),
+          actions: [
+            CupertinoButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Back'),
+            ),
+            BlocProvider(
+              create: (context) => SetTimerCubit(TimerRepoImpl()),
+              child: BlocConsumer<SetTimerCubit, SetTimerState>(
+                  listener: (context, state) {
+                state.whenOrNull(
+                  success: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SwBottomBar(indexScr: 4),
+                      ),
+                    );
+                  },
+                );
+              }, builder: (context, state) {
+                return CupertinoButton(
+                  onPressed: () {
+                    if (stopwatchName.isNotEmpty) {
+                      TimerHiveModel model = TimerHiveModel(
+                          id: DateTime.now().millisecondsSinceEpoch,
+                          timer: 0,
+                          name: stopwatchName,
+                          isStopped: false);
+                      context.read<SetTimerCubit>().setAddTimer(model);
+                      Navigator.pop(context);
+                    }
+
+                    // _startStopwatch(stopwatchName, context);
+                  },
+                  child: const Text('Start'),
+                );
+              }),
+            ),
+          ],
+        );
+      },
     );
   }
 }
