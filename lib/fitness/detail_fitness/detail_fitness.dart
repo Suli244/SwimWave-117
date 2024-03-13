@@ -34,9 +34,9 @@ class DetailFitnessSreen extends StatelessWidget {
                       Navigator.pop(context);
                     },
                     child: Icon(
-                      Icons.arrow_back_rounded,
-                      size: 27.h,
-                      color: SwColors.blue3,
+                      Icons.arrow_back_ios_rounded,
+                      size: 24.w,
+                      color: SwColors.blue1,
                     ),
                   ),
                   Expanded(

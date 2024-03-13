@@ -89,7 +89,7 @@ class PremiItem extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 30.h),
+                SizedBox(height: 35.h),
                 BtnModWidget(
                   onPressed: onPressed,
                   text: 'BUY PREMIUM FOR \$0,99',

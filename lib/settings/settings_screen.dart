@@ -35,9 +35,9 @@ class SettingsSreen extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       child: Icon(
-                        Icons.arrow_back_rounded,
+                        Icons.arrow_back_ios_rounded,
+                        size: 24.w,
                         color: SwColors.blue1,
-                        size: 27.h,
                       ),
                     ),
                     Text(

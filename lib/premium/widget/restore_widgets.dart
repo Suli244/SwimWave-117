@@ -27,7 +27,7 @@ class RestoreButtons extends StatelessWidget {
             style: TextStyle(
               fontSize: 12.h,
               fontWeight: FontWeight.w600,
-              color: SwColors.blue2,
+              color: SwColors.blue1,
             ),
           ),
         ),
@@ -38,7 +38,7 @@ class RestoreButtons extends StatelessWidget {
             style: TextStyle(
               fontSize: 12.h,
               fontWeight: FontWeight.w600,
-              color: SwColors.blue2,
+              color: SwColors.blue1,
             ),
           ),
         ),
@@ -49,7 +49,7 @@ class RestoreButtons extends StatelessWidget {
             style: TextStyle(
               fontSize: 12.h,
               fontWeight: FontWeight.w600,
-              color: SwColors.blue2,
+              color: SwColors.blue1,
             ),
           ),
         ),
