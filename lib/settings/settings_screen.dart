@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
+import 'package:swim_wave_117/core/sw_motin.dart';
+import 'package:swim_wave_117/onboarding/btn_mod_wid.dart';
+import 'package:swim_wave_117/premium/premium_screen.dart';
 
 class SettingsSreen extends StatelessWidget {
   const SettingsSreen({super.key});
@@ -27,8 +30,15 @@ class SettingsSreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const BackButton(
-                      color: SwColors.whate,
+                    SwMotion(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back_rounded,
+                        color: SwColors.blue1,
+                        size: 27.h,
+                      ),
                     ),
                     Text(
                       'Settings',
@@ -38,11 +48,33 @@ class SettingsSreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    SizedBox(
-                      width: 45.w,
-                    )
+                    SizedBox(width: 27.w)
                   ],
                 ),
+                SizedBox(height: 20.h),
+                SwMotion(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PremiumScreen(
+                          isClose: true,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Image.asset(
+                    'assets/images/premiumOnPre.png',
+                  ),
+                ),
+                SizedBox(height: 12.h),
+                const BtnModWidget(text: 'Restore purchase'),
+                SizedBox(height: 12.h),
+                const BtnModWidget(text: 'Privacy policy'),
+                SizedBox(height: 12.h),
+                const BtnModWidget(text: 'Terms of use'),
+                SizedBox(height: 12.h),
+                const BtnModWidget(text: 'Support'),
               ],
             ),
           ),

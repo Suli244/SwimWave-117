@@ -41,9 +41,7 @@ dependencies:
   intl: ^0.18.0
   shared_preferences: ^2.0.15
   smooth_page_indicator: ^1.1.0
-  
-
-
+  timer_count_down: ^2.2.1
 
 dev_dependencies:
   flutter_test:
