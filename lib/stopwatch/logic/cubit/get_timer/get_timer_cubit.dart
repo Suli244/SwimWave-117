@@ -13,7 +13,7 @@ class GetTimerCubit extends Cubit<GetTimerState> {
     emit(const GetTimerState.loading());
     try {
       final timerList = await repo.getTimer();
-      emit(GetTimerState.success(timerList.reversed.toList()));
+      emit(GetTimerState.success(List.from(timerList.reversed.toList())));
     } catch (e) {
       emit(GetTimerState.error(e.toString()));
     }

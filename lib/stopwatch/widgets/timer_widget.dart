@@ -220,7 +220,12 @@ class _TimerWidgetState extends State<TimerWidget> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: const Text('No'),
+              child: const Text(
+                'No',
+                style: TextStyle(
+                  color: Color(0xff007AFF),
+                ),
+              ),
             ),
             BlocProvider(
               create: (context) => DeleteTimerCubit(TimerRepoImpl()),
@@ -237,7 +242,12 @@ class _TimerWidgetState extends State<TimerWidget> {
                     onPressed: () {
                       context.read<DeleteTimerCubit>().delete(widget.model.id);
                     },
-                    child: const Text('Yes'),
+                    child: const Text(
+                      'Yes',
+                      style: TextStyle(
+                        color: Color(0xff007AFF),
+                      ),
+                    ),
                   );
                 },
               ),
