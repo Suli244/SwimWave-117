@@ -143,7 +143,6 @@ class _TimerWidgetState extends State<TimerWidget> {
                                   _timer.cancel();
                                   _isRunning = false;
                                   _isStopped = true;
-
                                   widget.onsss('');
                                 },
                               );
