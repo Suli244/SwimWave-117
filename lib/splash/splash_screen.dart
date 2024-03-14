@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:in_app_review/in_app_review.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:swim_wave_117/core/con_bar.dart';
 import 'package:swim_wave_117/onboarding/onboarding_screen.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class SpSc extends StatefulWidget {
+  const SpSc({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SpSc> createState() => _SpScState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SpScState extends State<SpSc> {
   @override
   void initState() {
     firstOpen();
@@ -54,6 +57,39 @@ class _SplashScreenState extends State<SplashScreen> {
       MaterialPageRoute(
         builder: (context) => const OnboardingScreen(),
       ),
+    );
+
+    SharedPreferences.getInstance().then(
+      (prefs) async {
+        if (!prefs.containsKey('rrrkkksshhsfgdg')) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const OnboardingScreen(),
+            ),
+          );
+          prefs.setDouble('rrrkkksshhsfgdg', 23918476);
+          await Future.delayed(const Duration(seconds: 3));
+          try {
+            final InAppReview inAppReview = InAppReview.instance;
+
+            if (await inAppReview.isAvailable()) {
+              inAppReview.requestReview();
+            }
+          } catch (e) {
+            throw Exception(e);
+          }
+        } else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SwBottomBar(
+                indexScr: 0,
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 }
