@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:swim_wave_117/core/con_bar.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
 import 'package:swim_wave_117/stopwatch/logic/cubit/delete_timer/delete_timer_cubit.dart';
@@ -34,7 +35,6 @@ class _TimerWidgetState extends State<TimerWidget> {
   void initState() {
     super.initState();
     fff();
-    context.read<GetTimerCubit>().getAddTimer();
     _timer = Timer(Duration.zero, () {});
   }
 
@@ -144,6 +144,8 @@ class _TimerWidgetState extends State<TimerWidget> {
                                   _timer.cancel();
                                   _isRunning = false;
                                   _isStopped = true;
+
+                                  widget.onsss('');
                                 },
                               );
                             },
@@ -152,16 +154,10 @@ class _TimerWidgetState extends State<TimerWidget> {
                                 onPressed: _elapsedSeconds == 0
                                     ? () {}
                                     : () {
-                                        setState(() {
-                                          _timer.cancel();
-                                          _isRunning = false;
-                                          _isStopped = true;
-                                        });
                                         context
                                             .read<UpdateTimerCubit>()
                                             .updateTimerAll(widget.model.id,
                                                 _elapsedSeconds);
-                                        widget.onsss('');
                                       },
                                 child: Container(
                                   width: 40.w,
@@ -233,7 +229,15 @@ class _TimerWidgetState extends State<TimerWidget> {
                 listener: (context, state) {
                   state.whenOrNull(
                     success: () {
-                      Navigator.pop(context);
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SwBottomBar(
+                            indexScr: 4,
+                          ),
+                        ),
+                        (protected) => false,
+                      );
                     },
                   );
                 },

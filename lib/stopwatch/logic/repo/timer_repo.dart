@@ -34,10 +34,8 @@ class TimerRepoImpl implements TimerRepo {
     final timerBox = await Hive.openBox<TimerHiveModel>('TimerBox');
     List<TimerHiveModel> listTimerUp =
         timerBox.values.where((e) => e.id == id).toList();
-
     listTimerUp.first.timer = timer;
     listTimerUp.first.isStopped = true;
-
     await listTimerUp.first.save();
   }
 }
