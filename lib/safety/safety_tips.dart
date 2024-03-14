@@ -45,7 +45,7 @@ class SafetyTips extends StatelessWidget {
                     width: 45.w,
                     child: SwMotion(
                         onPressed: () {
-                          Share.share(model.title);
+                          Share.share(model.description);
                         },
                         child: const Icon(
                           Icons.ios_share,

@@ -144,20 +144,25 @@ class _TechniquesSreenState extends State<TechniquesSreen> {
                   future: getSwimwavePichajs(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData && !snapshot.data!) {
-                      return SwMotion(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const PremiumScreen(
-                                isClose: true,
-                              ),
+                      return Column(
+                        children: [
+                          SwMotion(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PremiumScreen(
+                                    isClose: true,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/images/premiumOnPre.png',
                             ),
-                          );
-                        },
-                        child: Image.asset(
-                          'assets/images/premiumOnPre.png',
-                        ),
+                          ),
+                          SizedBox(height: 12.h)
+                        ],
                       );
                     }
                     return const SizedBox();
@@ -211,6 +216,7 @@ class _TechniquesSreenState extends State<TechniquesSreen> {
                                             image: DecorationImage(
                                               image: AssetImage(
                                                   listTechCon[index].image),
+                                                  fit: BoxFit.fill
                                             ),
                                           ),
                                           child: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
 import 'package:swim_wave_117/techniques/content/tips_content.dart';
@@ -54,7 +55,9 @@ class _DetailTipsSreenState extends State<DetailTipsSreen> {
                       ),
                     ),
                     SwMotion(
-                      onPressed: () {},
+                      onPressed: () {
+                        Share.share(widget.model.discr);
+                      },
                       child: Image.asset(
                         'assets/images/share.png',
                         width: 24.w,

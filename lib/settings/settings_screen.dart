@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
 import 'package:swim_wave_117/core/swimwave_psascovas.dart';
+import 'package:swim_wave_117/core/urls.dart';
+import 'package:swim_wave_117/core/web_view_plink.dart';
 import 'package:swim_wave_117/onboarding/btn_mod_wid.dart';
 import 'package:swim_wave_117/premium/premium_screen.dart';
 
@@ -86,11 +88,47 @@ class SettingsSreen extends StatelessWidget {
                       }
                       return const SizedBox();
                     }),
-                const BtnModWidget(text: 'Privacy policy'),
+                BtnModWidget(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const WebSw(
+                            title: 'Privacy policy',
+                            url: DocFF.pP,
+                          ),
+                        ),
+                      );
+                    },
+                    text: 'Privacy policy'),
                 SizedBox(height: 12.h),
-                const BtnModWidget(text: 'Terms of use'),
+                BtnModWidget(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const WebSw(
+                            title: 'Terms of use',
+                            url: DocFF.tUse,
+                          ),
+                        ),
+                      );
+                    },
+                    text: 'Terms of use'),
                 SizedBox(height: 12.h),
-                const BtnModWidget(text: 'Support'),
+                BtnModWidget(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const WebSw(
+                            title: 'Support',
+                            url: DocFF.s,
+                          ),
+                        ),
+                      );
+                    },
+                    text: 'Support'),
               ],
             ),
           ),

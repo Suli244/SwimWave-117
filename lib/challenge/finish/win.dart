@@ -17,8 +17,8 @@ class _WinState extends State<Win> {
   int challengeWin = 0;
   @override
   void initState() {
-    ssaasv();
     super.initState();
+    ssaasv();
   }
 
   Future<void> ssaasv() async {
