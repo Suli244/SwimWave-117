@@ -146,8 +146,6 @@ class _StopwatchSreenState extends State<StopwatchSreen> {
         return SwMotion(
           onPressed: () async {
             await _showAddStopwatchDialog(context);
-            // Trigger refresh after dialog closes
-            context.read<GetTimerCubit>().getAddTimer();
           },
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 24.r),
@@ -225,7 +223,9 @@ class _StopwatchSreenState extends State<StopwatchSreen> {
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SwBottomBar(indexScr: 4,),
+                          builder: (context) => const SwBottomBar(
+                            indexScr: 4,
+                          ),
                         ),
                         (protected) => false,
                       );
