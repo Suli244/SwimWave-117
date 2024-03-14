@@ -117,7 +117,7 @@ class _StopwatchSreenState extends State<StopwatchSreen> {
                                         bottom: index == model.length - 1
                                             ? 100.r
                                             : 0),
-                                    child: TimerWidget(
+                                    child: TimmmmeerWiigsdkcld(
                                       model: model[index],
                                       onsss: (_) {
                                         context

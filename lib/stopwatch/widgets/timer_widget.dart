@@ -12,8 +12,8 @@ import 'package:swim_wave_117/stopwatch/logic/cubit/update_timer/update_timer_cu
 import 'package:swim_wave_117/stopwatch/logic/model/timer_hive_model.dart';
 import 'package:swim_wave_117/stopwatch/logic/repo/timer_repo.dart';
 
-class TimerWidget extends StatefulWidget {
-  const TimerWidget({
+class TimmmmeerWiigsdkcld extends StatefulWidget {
+  const TimmmmeerWiigsdkcld({
     super.key,
     required this.model,
     required this.onsss,
@@ -21,10 +21,10 @@ class TimerWidget extends StatefulWidget {
   final TimerHiveModel model;
   final ValueChanged onsss;
   @override
-  State<TimerWidget> createState() => _TimerWidgetState();
+  State<TimmmmeerWiigsdkcld> createState() => _TimmmmeerWiigsdkcldState();
 }
 
-class _TimerWidgetState extends State<TimerWidget> {
+class _TimmmmeerWiigsdkcldState extends State<TimmmmeerWiigsdkcld> {
   late Timer _timer;
   late int _elapsedSeconds;
   bool _isRunning = false;

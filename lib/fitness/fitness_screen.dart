@@ -8,7 +8,7 @@ import 'package:swim_wave_117/core/swimwave_psascovas.dart';
 import 'package:swim_wave_117/fitness/detail_fitness/detail_fitness.dart';
 import 'package:swim_wave_117/fitness/model/fitness_data.dart';
 import 'package:swim_wave_117/fitness/widget/fitness_item.dart';
-import 'package:swim_wave_117/premium/premium_screen.dart';
+import 'package:swim_wave_117/premium/preeeeemcaslkna.dart';
 import 'package:swim_wave_117/settings/settings_screen.dart';
 
 class FitnessSreen extends StatelessWidget {
@@ -70,7 +70,7 @@ class FitnessSreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const PremiumScreen(
+                              builder: (context) => const Preeeeemcaslkna(
                                 isClose: true,
                               ),
                             ),
@@ -109,7 +109,8 @@ class FitnessSreen extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const PremiumScreen(
+                                      builder: (context) =>
+                                          const Preeeeemcaslkna(
                                         isClose: true,
                                       ),
                                     ),

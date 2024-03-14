@@ -4,15 +4,15 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/onboarding/btn_mod_wid.dart';
 import 'package:swim_wave_117/onboarding/item_onboa.dart';
-import 'package:swim_wave_117/premium/premium_screen.dart';
+import 'package:swim_wave_117/premium/preeeeemcaslkna.dart';
 
-class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+class Ooonabahjgcas extends StatefulWidget {
+  const Ooonabahjgcas({super.key});
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  State<Ooonabahjgcas> createState() => _OoonabahjgcasState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OoonabahjgcasState extends State<Ooonabahjgcas> {
   final PageController controller = PageController();
   int currantPage = 0;
 
@@ -81,7 +81,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const PremiumScreen(),
+                          builder: (context) => const Preeeeemcaslkna(),
                         ),
                         (protected) => false,
                       );

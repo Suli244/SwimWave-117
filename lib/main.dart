@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:swim_wave_117/core/swimwave_apsaksas.dart';
-import 'package:swim_wave_117/splash/splash_screen.dart';
+import 'package:swim_wave_117/splash/splllaashoaivsa.dart';
 import 'package:swim_wave_117/stopwatch/logic/cubit/get_timer/get_timer_cubit.dart';
 import 'package:swim_wave_117/stopwatch/logic/model/timer_hive_model.dart';
 import 'package:swim_wave_117/stopwatch/logic/repo/timer_repo.dart';

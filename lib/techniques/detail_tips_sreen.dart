@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
-import 'package:swim_wave_117/techniques/content/tips_content.dart';
+import 'package:swim_wave_117/techniques/content/ttttippsaljsma.dart';
 
 class DetailTipsSreen extends StatefulWidget {
   const DetailTipsSreen({super.key, required this.model});

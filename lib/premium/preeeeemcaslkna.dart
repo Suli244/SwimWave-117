@@ -8,19 +8,19 @@ import 'package:swim_wave_117/core/swimwave_apsaksas.dart';
 import 'package:swim_wave_117/core/swimwave_psascovas.dart';
 import 'package:swim_wave_117/core/urls.dart';
 import 'package:swim_wave_117/premium/widget/item_premi.dart';
-import 'package:swim_wave_117/premium/widget/restore_widgets.dart';
+import 'package:swim_wave_117/premium/widget/rrrreestwwcmlads.dart';
 
-class PremiumScreen extends StatefulWidget {
-  const PremiumScreen({
+class Preeeeemcaslkna extends StatefulWidget {
+  const Preeeeemcaslkna({
     super.key,
     this.isClose = false,
   });
   final bool isClose;
   @override
-  State<PremiumScreen> createState() => _PremiumScreenState();
+  State<Preeeeemcaslkna> createState() => _PreeeeemcaslknaState();
 }
 
-class _PremiumScreenState extends State<PremiumScreen> {
+class _PreeeeemcaslknaState extends State<Preeeeemcaslkna> {
   Future<void> swimwavePurchase() async {
     final swimwavePaywall =
         await SwimwaveAdapty().swimwaveGetPaywall(DocFF.slkdnvsdvsdv);

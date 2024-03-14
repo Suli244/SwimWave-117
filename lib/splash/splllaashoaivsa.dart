@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:swim_wave_117/core/con_bar.dart';
-import 'package:swim_wave_117/onboarding/onboarding_screen.dart';
+import 'package:swim_wave_117/onboarding/ooonabahjgcas.dart';
 
 class SpSc extends StatefulWidget {
   const SpSc({super.key});
@@ -55,7 +55,7 @@ class _SpScState extends State<SpSc> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const OnboardingScreen(),
+        builder: (context) => const Ooonabahjgcas(),
       ),
     );
 
@@ -65,7 +65,7 @@ class _SpScState extends State<SpSc> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const OnboardingScreen(),
+              builder: (context) => const Ooonabahjgcas(),
             ),
           );
           prefs.setDouble('rrrkkksshhsfgdg', 23918476);

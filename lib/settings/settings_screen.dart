@@ -6,7 +6,7 @@ import 'package:swim_wave_117/core/swimwave_psascovas.dart';
 import 'package:swim_wave_117/core/urls.dart';
 import 'package:swim_wave_117/core/web_view_plink.dart';
 import 'package:swim_wave_117/onboarding/btn_mod_wid.dart';
-import 'package:swim_wave_117/premium/premium_screen.dart';
+import 'package:swim_wave_117/premium/preeeeemcaslkna.dart';
 
 class SettingsSreen extends StatelessWidget {
   const SettingsSreen({super.key});
@@ -66,7 +66,7 @@ class SettingsSreen extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const PremiumScreen(
+                                    builder: (context) => const Preeeeemcaslkna(
                                       isClose: true,
                                     ),
                                   ),

@@ -17,8 +17,8 @@ class SwimwaveAdapty {
 
   Future<AdaptyProfile?> learCall() async {
     try {
-      final ocev = await swimwaveAdapty.getProfile();
-      return ocev;
+      final kjnsdvsdsdpppqvds = await swimwaveAdapty.getProfile();
+      return kjnsdvsdsdpppqvds;
     } on AdaptyError catch (adaptyError) {
       onSwimwaveAdaptyErrorOccurred?.call(adaptyError);
     } catch (e) {
@@ -42,11 +42,11 @@ class SwimwaveAdapty {
     String swimwavePaywallId,
   ) async {
     try {
-      final swimwaveocev = await swimwaveAdapty.getPaywall(
+      final swimwavekjnsdvsdsdpppqvds = await swimwaveAdapty.getPaywall(
         placementId: swimwavePaywallId,
         loadTimeout: const Duration(seconds: 5),
       );
-      return swimwaveocev;
+      return swimwavekjnsdvsdsdpppqvds;
     } on AdaptyError catch (adaptyError) {
       onSwimwaveAdaptyErrorOccurred?.call(adaptyError);
     } catch (e) {
@@ -60,9 +60,9 @@ class SwimwaveAdapty {
     AdaptyPaywall swimwavePaywall,
   ) async {
     try {
-      final swimwaveocev =
+      final swimwavekjnsdvsdsdpppqvds =
           await swimwaveAdapty.getPaywallProducts(paywall: swimwavePaywall);
-      return swimwaveocev;
+      return swimwavekjnsdvsdsdpppqvds;
     } on AdaptyError catch (adaptyError) {
       onSwimwaveAdaptyErrorOccurred?.call(adaptyError);
     } catch (e) {
@@ -75,9 +75,9 @@ class SwimwaveAdapty {
   Future<AdaptyProfile?> swimwaveMakePurchase(
       AdaptyPaywallProduct swimwaveProduct) async {
     try {
-      final swimwaveocev =
+      final swimwavekjnsdvsdsdpppqvds =
           await swimwaveAdapty.makePurchase(product: swimwaveProduct);
-      return swimwaveocev;
+      return swimwavekjnsdvsdsdpppqvds;
     } on AdaptyError catch (adaptyError) {
       onSwimwaveAdaptyErrorOccurred?.call(adaptyError);
     } catch (e) {
@@ -89,9 +89,9 @@ class SwimwaveAdapty {
 
   Future<AdaptyProfile?> swimwaveRestorePurchases() async {
     try {
-      final swimwaveocev = await swimwaveAdapty.restorePurchases();
+      final swimwavekjnsdvsdsdpppqvds = await swimwaveAdapty.restorePurchases();
 
-      return swimwaveocev;
+      return swimwavekjnsdvsdsdpppqvds;
     } on AdaptyError catch (adaptyError) {
       onSwimwaveAdaptyErrorOccurred?.call(adaptyError);
     } catch (e) {

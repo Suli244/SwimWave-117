@@ -5,7 +5,7 @@ import 'package:swim_wave_117/challenge/challenge_screen.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
 import 'package:swim_wave_117/fitness/fitness_screen.dart';
-import 'package:swim_wave_117/safety/safety_screen.dart';
+import 'package:swim_wave_117/safety/saffetchsajks.dart';
 import 'package:swim_wave_117/stopwatch/stopwatch_screen.dart';
 import 'package:swim_wave_117/techniques/techniques_sreen.dart';
 
