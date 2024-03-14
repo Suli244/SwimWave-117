@@ -9,7 +9,7 @@ import 'package:swim_wave_117/core/urls.dart';
 
 Future<bool> getSwimwavePichajs() async {
   final vksddvs = await SharedPreferences.getInstance();
-  return vksddvs.getBool('pijvdpsjivpdsjipsvdpid') ?? true;
+  return vksddvs.getBool('pijvdpsjivpdsjipsvdpid') ?? false;
 }
 
 Future<void> setSwimwavePichajs() async {
