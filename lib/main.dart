@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Swim Wave',
           home: child,
-          theme: ThemeData.light().copyWith(
+          theme: ThemeData(
+            fontFamily: 'Roboto',
             splashColor: Colors.transparent,
             splashFactory: NoSplash.splashFactory,
             highlightColor: Colors.transparent,

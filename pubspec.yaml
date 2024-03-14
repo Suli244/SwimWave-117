@@ -50,6 +50,7 @@ dependencies:
   freezed_annotation: ^2.1.0
   flutter_bloc: ^8.1.1
   share_plus: ^7.2.2
+  in_app_review: ^2.0.8
   adapty_flutter: ^2.9.0
   
 dev_dependencies:
