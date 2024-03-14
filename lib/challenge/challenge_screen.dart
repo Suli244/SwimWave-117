@@ -145,39 +145,39 @@ class _ChallengeSreenState extends State<ChallengeSreen> {
                     ],
                   ),
                 ),
-                const Spacer(),
-                SwMotion(
-                  onPressed: () async {
-                    await Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const YourChallengeSreen(),
-                      ),
-                      (protected) => false,
-                    );
-                    setState(() {});
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(vertical: 24.r),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.r),
-                      color: SwColors.blue1,
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Accept the challenge',
-                        style: TextStyle(
-                          color: SwColors.whate,
-                          fontSize: 16.h,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 24.h),
               ],
+            ),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SwMotion(
+        onPressed: () async {
+          await Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const YourChallengeSreen(),
+            ),
+            (protected) => false,
+          );
+          setState(() {});
+        },
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 24.r),
+          width: MediaQuery.of(context).size.width,
+          height: 68.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16.r),
+            color: SwColors.blue1,
+          ),
+          child: Center(
+            child: Text(
+              'Accept the challenge',
+              style: TextStyle(
+                color: SwColors.whate,
+                fontSize: 16.h,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ),

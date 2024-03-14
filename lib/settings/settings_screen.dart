@@ -56,32 +56,35 @@ class SettingsSreen extends StatelessWidget {
                 FutureBuilder(
                     future: getSwimwavePichajs(),
                     builder: (context, snapshot) {
-                      return Column(
-                        children: [
-                          SwMotion(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const PremiumScreen(
-                                    isClose: true,
-                                  ),
-                                ),
-                              );
-                            },
-                            child: Image.asset(
-                              'assets/images/premiumOnPre.png',
-                            ),
-                          ),
-                          SizedBox(height: 12.h),
-                          BtnModWidget(
+                      if (snapshot.hasData && !snapshot.data!) {
+                        return Column(
+                          children: [
+                            SwMotion(
                               onPressed: () {
-                                restoreSwimwavePichajs(context);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const PremiumScreen(
+                                      isClose: true,
+                                    ),
+                                  ),
+                                );
                               },
-                              text: 'Restore purchase'),
-                          SizedBox(height: 12.h),
-                        ],
-                      );
+                              child: Image.asset(
+                                'assets/images/premiumOnPre.png',
+                              ),
+                            ),
+                            SizedBox(height: 12.h),
+                            BtnModWidget(
+                                onPressed: () {
+                                  restoreSwimwavePichajs(context);
+                                },
+                                text: 'Restore purchase'),
+                            SizedBox(height: 12.h),
+                          ],
+                        );
+                      }
+                      return const SizedBox();
                     }),
                 const BtnModWidget(text: 'Privacy policy'),
                 SizedBox(height: 12.h),

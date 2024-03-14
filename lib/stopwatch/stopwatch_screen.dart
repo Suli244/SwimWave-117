@@ -112,13 +112,19 @@ class _StopwatchSreenState extends State<StopwatchSreen> {
                                   itemCount: model.length,
                                   separatorBuilder: (context, index) =>
                                       const SizedBox(height: 12),
-                                  itemBuilder: (context, index) => TimerWidget(
-                                    model: model[index],
-                                    onsss: (_) {
-                                      context
-                                          .read<GetTimerCubit>()
-                                          .getAddTimer();
-                                    },
+                                  itemBuilder: (context, index) => Padding(
+                                    padding: EdgeInsets.only(
+                                        bottom: index == model.length - 1
+                                            ? 100.r
+                                            : 0),
+                                    child: TimerWidget(
+                                      model: model[index],
+                                      onsss: (_) {
+                                        context
+                                            .read<GetTimerCubit>()
+                                            .getAddTimer();
+                                      },
+                                    ),
                                   ),
                                 ),
                               )
