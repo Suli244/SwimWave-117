@@ -140,33 +140,20 @@ class _TechniquesSreenState extends State<TechniquesSreen> {
                   ),
                 ),
                 SizedBox(height: 16.h),
-                FutureBuilder(
-                  future: getSwimwavePichajs(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData && !snapshot.data!) {
-                      return Column(
-                        children: [
-                          SwMotion(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const PremiumScreen(
-                                    isClose: true,
-                                  ),
-                                ),
-                              );
-                            },
-                            child: Image.asset(
-                              'assets/images/premiumOnPre.png',
-                            ),
-                          ),
-                          SizedBox(height: 12.h)
-                        ],
-                      );
-                    }
-                    return const SizedBox();
+                SwMotion(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PremiumScreen(
+                          isClose: true,
+                        ),
+                      ),
+                    );
                   },
+                  child: Image.asset(
+                    'assets/images/premiumOnPre.png',
+                  ),
                 ),
                 Expanded(
                   child: SingleChildScrollView(
@@ -214,10 +201,9 @@ class _TechniquesSreenState extends State<TechniquesSreen> {
                                           padding: EdgeInsets.all(16.r),
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
-                                              image: AssetImage(
-                                                  listTechCon[index].image),
-                                                  fit: BoxFit.fill
-                                            ),
+                                                image: AssetImage(
+                                                    listTechCon[index].image),
+                                                fit: BoxFit.fill),
                                           ),
                                           child: Column(
                                             mainAxisAlignment:
