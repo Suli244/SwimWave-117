@@ -161,7 +161,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                                             .read<UpdateTimerCubit>()
                                             .updateTimerAll(widget.model.id,
                                                 _elapsedSeconds);
-                                        // widget.onsss('');
+                                        widget.onsss('');
                                       },
                                 child: Container(
                                   width: 40.w,

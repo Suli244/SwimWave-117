@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:swim_wave_117/core/swimwave_apsaksas.dart';
 import 'package:swim_wave_117/splash/splash_screen.dart';
+import 'package:swim_wave_117/stopwatch/logic/cubit/get_timer/get_timer_cubit.dart';
 import 'package:swim_wave_117/stopwatch/logic/model/timer_hive_model.dart';
+import 'package:swim_wave_117/stopwatch/logic/repo/timer_repo.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,21 +23,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Swim Wave',
-        home: child,
-        theme: ThemeData.light().copyWith(
-          splashColor: Colors.transparent,
-          splashFactory: NoSplash.splashFactory,
-          highlightColor: Colors.transparent,
+    return BlocProvider(
+      create: (context) => GetTimerCubit(TimerRepoImpl()),
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Swim Wave',
+          home: child,
+          theme: ThemeData.light().copyWith(
+            splashColor: Colors.transparent,
+            splashFactory: NoSplash.splashFactory,
+            highlightColor: Colors.transparent,
+          ),
         ),
+        child: const SplashScreen(),
       ),
-      child: const SplashScreen(),
     );
   }
 }
