@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
+import 'package:swim_wave_117/core/swimwave_psascovas.dart';
+import 'package:swim_wave_117/premium/premium_screen.dart';
 import 'package:swim_wave_117/settings/settings_screen.dart';
 import 'package:swim_wave_117/techniques/content/techniques_content.dart';
 import 'package:swim_wave_117/techniques/content/tips_content.dart';
@@ -137,172 +139,241 @@ class _TechniquesSreenState extends State<TechniquesSreen> {
                     ],
                   ),
                 ),
+                SizedBox(height: 16.h),
+                FutureBuilder(
+                  future: getSwimwavePichajs(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData && !snapshot.data!) {
+                      return SwMotion(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PremiumScreen(
+                                isClose: true,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/images/premiumOnPre.png',
+                        ),
+                      );
+                    }
+                    return const SizedBox();
+                  },
+                ),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
                         SizedBox(height: 16.h),
                         text == 'Techniques'
-                            ? ListView.separated(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  return SwMotion(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              DetailTechniquesSreen(
-                                            model: listTechCon[index],
+                            ? FutureBuilder(
+                                future: getSwimwavePichajs(),
+                                builder: (context, snapshot) {
+                                  return ListView.separated(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) {
+                                      return SwMotion(
+                                        onPressed: () {
+                                          if (snapshot.hasData &&
+                                              !snapshot.data!) {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const PremiumScreen(
+                                                  isClose: true,
+                                                ),
+                                              ),
+                                            );
+                                          } else {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    DetailTechniquesSreen(
+                                                  model: listTechCon[index],
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                        },
+                                        child: Container(
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: 168.h,
+                                          padding: EdgeInsets.all(16.r),
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  listTechCon[index].image),
+                                            ),
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                listTechCon[index].title,
+                                                style: TextStyle(
+                                                  color: SwColors.whate,
+                                                  fontSize: 24.h,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                              SizedBox(height: 4.h),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'FREE',
+                                                    style: TextStyle(
+                                                      color: SwColors.blue1,
+                                                      fontSize: 12.h,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                  SizedBox(width: 8.w),
+                                                  Text(
+                                                    'Techniques',
+                                                    style: TextStyle(
+                                                      color: SwColors.whate,
+                                                      fontSize: 12.h,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       );
                                     },
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      height: 168.h,
-                                      padding: EdgeInsets.all(16.r),
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: AssetImage(
-                                              listTechCon[index].image),
-                                        ),
-                                      ),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            listTechCon[index].title,
-                                            style: TextStyle(
-                                              color: SwColors.whate,
-                                              fontSize: 24.h,
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                          ),
-                                          SizedBox(height: 4.h),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'FREE',
-                                                style: TextStyle(
-                                                  color: SwColors.blue1,
-                                                  fontSize: 12.h,
-                                                  fontWeight: FontWeight.w600,
+                                    separatorBuilder: (_, i) =>
+                                        SizedBox(height: 12.h),
+                                    itemCount: listTechCon.length,
+                                  );
+                                })
+                            : FutureBuilder(
+                                future: getSwimwavePichajs(),
+                                builder: (context, snapshot) {
+                                  return ListView.separated(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) {
+                                      return SwMotion(
+                                        onPressed: () {
+                                          if (snapshot.hasData &&
+                                              !snapshot.data!) {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const PremiumScreen(
+                                                  isClose: true,
                                                 ),
                                               ),
-                                              SizedBox(width: 8.w),
-                                              Text(
-                                                'Techniques',
-                                                style: TextStyle(
-                                                  color: SwColors.whate,
-                                                  fontSize: 12.h,
-                                                  fontWeight: FontWeight.w600,
+                                            );
+                                          } else {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    DetailTipsSreen(
+                                                  model: listTipsCon[index],
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                        },
+                                        child: Container(
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: 96.h,
+                                          decoration: BoxDecoration(
+                                            color: SwColors.blue084685,
+                                            borderRadius:
+                                                BorderRadius.circular(19.r),
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Image.asset(
+                                                listTipsCon[index].image,
+                                                height: MediaQuery.of(context)
+                                                    .size
+                                                    .height,
+                                                width: 120.w,
+                                                fit: BoxFit.fill,
+                                              ),
+                                              SizedBox(width: 16.w),
+                                              Expanded(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      listTipsCon[index].title,
+                                                      style: TextStyle(
+                                                        color: SwColors.whate,
+                                                        fontSize: 16.h,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                    SizedBox(height: 8.h),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          'FREE',
+                                                          style: TextStyle(
+                                                            color:
+                                                                SwColors.blue1,
+                                                            fontSize: 12.h,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 8.w),
+                                                        Text(
+                                                          'Tips',
+                                                          style: TextStyle(
+                                                            color:
+                                                                SwColors.whate,
+                                                            fontSize: 12.h,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
                                             ],
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                                separatorBuilder: (_, i) =>
-                                    SizedBox(height: 12.h),
-                                itemCount: listTechCon.length,
-                              )
-                            : ListView.separated(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  return SwMotion(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => DetailTipsSreen(
-                                            model: listTipsCon[index],
-                                          ),
                                         ),
                                       );
                                     },
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      height: 96.h,
-                                      decoration: BoxDecoration(
-                                        color: SwColors.blue084685,
-                                        borderRadius:
-                                            BorderRadius.circular(19.r),
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Image.asset(
-                                            listTipsCon[index].image,
-                                            height: MediaQuery.of(context)
-                                                .size
-                                                .height,
-                                            width: 120.w,
-                                            fit: BoxFit.fill,
-                                          ),
-                                          SizedBox(width: 16.w),
-                                          Expanded(
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  listTipsCon[index].title,
-                                                  style: TextStyle(
-                                                    color: SwColors.whate,
-                                                    fontSize: 16.h,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                                SizedBox(height: 8.h),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'FREE',
-                                                      style: TextStyle(
-                                                        color: SwColors.blue1,
-                                                        fontSize: 12.h,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                    ),
-                                                    SizedBox(width: 8.w),
-                                                    Text(
-                                                      'Tips',
-                                                      style: TextStyle(
-                                                        color: SwColors.whate,
-                                                        fontSize: 12.h,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                    separatorBuilder: (_, i) =>
+                                        SizedBox(height: 12.h),
+                                    itemCount: listTipsCon.length,
                                   );
-                                },
-                                separatorBuilder: (_, i) =>
-                                    SizedBox(height: 12.h),
-                                itemCount: listTipsCon.length,
-                              ),
+                                }),
                         SizedBox(height: 20.h),
                       ],
                     ),

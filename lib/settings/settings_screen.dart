@@ -53,28 +53,36 @@ class SettingsSreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 20.h),
-                SwMotion(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const PremiumScreen(
-                          isClose: true,
-                        ),
-                      ),
-                    );
-                  },
-                  child: Image.asset(
-                    'assets/images/premiumOnPre.png',
-                  ),
-                ),
-                SizedBox(height: 12.h),
-                BtnModWidget(
-                    onPressed: () {
-                      restoreSwimwavePichajs(context);
-                    },
-                    text: 'Restore purchase'),
-                SizedBox(height: 12.h),
+                FutureBuilder(
+                    future: getSwimwavePichajs(),
+                    builder: (context, snapshot) {
+                      return Column(
+                        children: [
+                          SwMotion(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PremiumScreen(
+                                    isClose: true,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/images/premiumOnPre.png',
+                            ),
+                          ),
+                          SizedBox(height: 12.h),
+                          BtnModWidget(
+                              onPressed: () {
+                                restoreSwimwavePichajs(context);
+                              },
+                              text: 'Restore purchase'),
+                          SizedBox(height: 12.h),
+                        ],
+                      );
+                    }),
                 const BtnModWidget(text: 'Privacy policy'),
                 SizedBox(height: 12.h),
                 const BtnModWidget(text: 'Terms of use'),
