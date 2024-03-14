@@ -8,7 +8,6 @@ import 'package:swim_wave_117/core/con_bar.dart';
 import 'package:swim_wave_117/core/sw_colors.dart';
 import 'package:swim_wave_117/core/sw_motin.dart';
 import 'package:swim_wave_117/stopwatch/logic/cubit/delete_timer/delete_timer_cubit.dart';
-import 'package:swim_wave_117/stopwatch/logic/cubit/get_timer/get_timer_cubit.dart';
 import 'package:swim_wave_117/stopwatch/logic/cubit/update_timer/update_timer_cubit.dart';
 import 'package:swim_wave_117/stopwatch/logic/model/timer_hive_model.dart';
 import 'package:swim_wave_117/stopwatch/logic/repo/timer_repo.dart';
