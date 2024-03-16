@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:in_app_review/in_app_review.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:swim_wave_117/core/con_bar.dart';
-import 'package:swim_wave_117/onboarding/ooonabahjgcas.dart';
+import 'package:swim_wave_117/swim/yyyyyyyyy.dart';
 
 class SpSc extends StatefulWidget {
   const SpSc({super.key});
@@ -13,9 +10,14 @@ class SpSc extends StatefulWidget {
 }
 
 class _SpScState extends State<SpSc> {
+  bool? jowehvonre;
   @override
   void initState() {
-    firstOpen();
+    yyyyyyyy(context, (val) {
+      setState(() {
+        jowehvonre = val;
+      });
+    });
     super.initState();
   }
 
@@ -38,58 +40,21 @@ class _SpScState extends State<SpSc> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
-              child: Image.asset(
-                'assets/images/logo.png',
-                width: 260.w,
-                height: 180.h,
+              child: AnimatedOpacity(
+                duration: const Duration(milliseconds: 1000),
+                opacity: jowehvonre == null ? 0 : 1,
+                child: Image.asset(
+                  jowehvonre != null && jowehvonre!
+                      ? 'assets/images/asdasdasda.png'
+                      : 'assets/images/logo.png',
+                  width: 260.w,
+                  height: 180.h,
+                ),
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-
-  firstOpen() async {
-    await Future.delayed(const Duration(milliseconds: 1450));
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const Ooonabahjgcas(),
-      ),
-    );
-
-    SharedPreferences.getInstance().then(
-      (prefs) async {
-        if (!prefs.containsKey('rrrkkksshhsfgdg')) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const Ooonabahjgcas(),
-            ),
-          );
-          prefs.setDouble('rrrkkksshhsfgdg', 23918476);
-          await Future.delayed(const Duration(seconds: 3));
-          try {
-            final InAppReview inAppReview = InAppReview.instance;
-
-            if (await inAppReview.isAvailable()) {
-              inAppReview.requestReview();
-            }
-          } catch (e) {
-            throw Exception(e);
-          }
-        } else {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const SwBottomBar(
-                indexScr: 0,
-              ),
-            ),
-          );
-        }
-      },
     );
   }
 }
